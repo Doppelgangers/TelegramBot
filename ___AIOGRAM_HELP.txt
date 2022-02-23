@@ -1,0 +1,14 @@
+from aiogram import  Bot , types
+from aiogram.dispatcher import Dispatcher
+from aiogram.utils import executor
+
+bot = Bot(token=telegramToken)
+dp = Dispatcher(bot)
+
+
+@dp.message_handler()
+async def echo( message : types.Message ):
+    await message.answer(message.text) отправить сообщение
+    await message.reply(message.text) ответка
+message.frpm_user.id (получить id пользователя по сообщению)
+    await bot.send_message(message.frpm_user.id,message.text)
