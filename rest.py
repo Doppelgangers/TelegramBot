@@ -1,8 +1,9 @@
 from selenium import webdriver
 from bs4 import BeautifulSoup
 import time
+import json
 
-def getHtml(data):
+def findPage(data):
     # Создаём браузер в скобках путь к нему
     dr = webdriver.Chrome("chromedriver.exe")
     #Заходим на сайт с формой регистрации
@@ -35,7 +36,7 @@ def getHtml(data):
     data_end.send_keys(data)
         # переход на страницу с нужной датой
     btnGet = dr.find_element_by_id('doSrchBtn').click()
-    #Сохраняем html
+        #Сохраняем html
     html = dr.page_source
     return html
 
@@ -49,9 +50,6 @@ def parser(html):
         page.pop(-1)
 
     day = []
-
-
-
 
     for i in range(int(len(page)/5)):
         day.append(
@@ -68,15 +66,26 @@ def parser(html):
 
     return day
 
-def viwe(massive):
-    print ("\n" * 100)
+def printScheduleConsole(massive):
+    print("\n" * 100)
     for item in massive:
         print(item['time'] + " | " + item['name'])
-    print ("\n" * 10)
+    print("\n" * 10)
+
+def getSchedule(date = '28.02.2022'):
+    html = findPage(date)
+    pars_page = parser(html)
+    return pars_page
+
+def saveSchedule(result):
+    print(result)
+    with open('ScheduleToDay.json', 'w') as fout:
+        json.dump(result, fout)
+
 
 
 if __name__ == '__main__':
-    html=getHtml('28.02.2022')
-    list = parser(html)
-    viwe(list)
+    schedule = getSchedule('28.02.2022')
+    saveSchedule(schedule)
+    # printScheduleConsole(schedule)
 
