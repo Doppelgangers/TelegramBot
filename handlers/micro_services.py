@@ -1,9 +1,11 @@
 from aiogram import types ,Dispatcher
-from createBot import dp
 
+from scripts.Schedule import Schedule
 
 async def echo(message: types.Message):
-    await message.answer(message.from_user.id)
+    s = Schedule()
+    text = s.readText('handlers/ScheduleToDay.json')
+    await message.answer(text)
 
 
 def registerHendlers_commands(dp: Dispatcher):

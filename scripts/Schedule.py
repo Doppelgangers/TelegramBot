@@ -7,20 +7,20 @@ class Schedule:
     def __init__(self):
         pass
 
-    def uppdate(self, date = '28.02.2022'):
+    def uppdate(self, date = '28.02.2022' , patch = 'chromedriver.exe'):
     ### В фунцию передаётся дата в формате dd.mm.yyyy ###
     #   return 'ErrorLoad' происходит если не успел браузер загрузиться или не найден элемент который запланирован
     #   return 'free' выходной
     #   return 'True' программа сохранила расисание
         # Создаём браузер в скобках путь к нему
-        dr = webdriver.Chrome("chromedriver.exe")
+        dr = webdriver.Chrome(patch)
 
-
+        time.sleep(5)
         # Заходим на сайт с формой регистрации
         dr.get('https://lms.synergy.ru/')
 
         # Ждём пока всё загрузится
-        time.sleep(3)
+        time.sleep(10)
         # ===============================================
 
         try:
@@ -40,7 +40,7 @@ class Schedule:
             print('ERROR : ErrorLoad 1')
             return 'ErrorLoad'
             # ================================================
-        time.sleep(3)
+        time.sleep(10)
 
         # Переходим в отдел расписания
         dr.get('https://lms.synergy.ru/schedule/academ')
