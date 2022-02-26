@@ -23,17 +23,20 @@ def tomorrowSchedule():
     dat = tomorrow.strftime('%d.%m.%Y')
     sched.uppdate('dat', 'data/schedule/ScheduleTomorrow.json')
 
-def spam():
-    tex = sched.readText()
-    bot.sendMsg('761897585',  tex)
+def spamToDay():
+    tex = sched.readText('data/schedule/ScheduleToDay.json')
+    bot.sendMsg('761897585',  'Расписание на сегодня: \n' + tex)
 
-tomorrowSchedule()
+def spamTomorrow():
+    tex = sched.readText('data/schedule/ScheduleTomorrow.json')
+    bot.sendMsg('761897585', 'Расписание на сегодня: \n' + tex)
 
-# schedule.every(60).seconds.do(spam)
-# schedule.every().day.at("06:00").do(nowSchedule)
-# schedule.every().day.at("06:30").do(spam)
-# schedule.every().day.at("20:00").do(tomorrowSchedule)
-# schedule.every().day.at("20:30").do(spam)
-# while True:
-#     schedule.run_pending()
-#     time.sleep(1)
+
+
+schedule.every().day.at("06:00").do(nowSchedule)
+schedule.every().day.at("06:30").do(spamToDay)
+schedule.every().day.at("20:00").do(tomorrowSchedule)
+schedule.every().day.at("20:30").do(spamToDay)
+while True:
+    schedule.run_pending()
+    time.sleep(1)
