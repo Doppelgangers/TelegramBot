@@ -3,7 +3,7 @@ from createBot import dp
 
 
 async def echo(message: types.Message):
-    await message.answer(message.text)
+    await message.answer(message.from_user.id)
 
 
 def registerHendlers_commands(dp: Dispatcher):

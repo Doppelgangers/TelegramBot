@@ -1,6 +1,9 @@
 from aiogram.utils import executor
 from createBot import dp
 
+import schedule
+
+
 async def on_startup(_):
     print("Good start >_< NOT ERROR")
 
