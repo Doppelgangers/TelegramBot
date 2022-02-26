@@ -21,7 +21,8 @@ def tomorrowSchedule():
     today = datetime.date.today()
     tomorrow = today + datetime.timedelta(days=1)
     dat = tomorrow.strftime('%d.%m.%Y')
-    sched.uppdate('dat', 'data/schedule/ScheduleTomorrow.json')
+    dat = '28.02.2022'
+    sched.uppdate(dat, 'data/schedule/ScheduleTomorrow.json')
 
 def spamToDay():
     tex = sched.readText('data/schedule/ScheduleToDay.json')
@@ -29,8 +30,7 @@ def spamToDay():
 
 def spamTomorrow():
     tex = sched.readText('data/schedule/ScheduleTomorrow.json')
-    bot.sendMsg('761897585', 'Расписание на сегодня: \n' + tex)
-
+    bot.sendMsg('761897585', 'Расписание на завтра: \n' + tex)
 
 
 schedule.every().day.at("06:00").do(nowSchedule)

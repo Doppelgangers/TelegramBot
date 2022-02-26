@@ -78,6 +78,8 @@ class Schedule:
         # Если страница не содержит
         if len(page) == 1:
             print("Выходной")
+            with open(patchSave, 'w') as fout:
+                json.dump({'msg':'free'}, fout)
             return 'free'
 
         # Удалить мусор (последнии 4 td содержат не расписание)
@@ -116,6 +118,11 @@ class Schedule:
         ### Просто считывает сохранённый ранее файл и выдаёт как текст ###
         with open(path, "r") as read_file:
             data = json.load(read_file)
+            try:
+                if data['msg'] == 'free':
+                    return "Выходной"
+            except:
+                pass
         text = ''
         for i in range(len(data)):
             text += data[i]['time'] + "\n" + data[i]['name'] + "\n" + "\n"
