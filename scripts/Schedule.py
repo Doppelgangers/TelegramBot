@@ -4,16 +4,16 @@ import time
 import json
 
 class Schedule:
-    def __init__(self):
-        pass
+    def __init__(self , patchOfChrome= 'data/chromedriver.exe'):
+        self.patchOfChrome = patchOfChrome
 
-    def uppdate(self, date = '28.02.2022' , patch = 'chromedriver.exe'):
+    def uppdate(self, date = '25.02.2022' , patchSave = 'data/schedule/ScheduleToDay.json'):
     ### В фунцию передаётся дата в формате dd.mm.yyyy ###
     #   return 'ErrorLoad' происходит если не успел браузер загрузиться или не найден элемент который запланирован
     #   return 'free' выходной
     #   return 'True' программа сохранила расисание
         # Создаём браузер в скобках путь к нему
-        dr = webdriver.Chrome(patch)
+        dr = webdriver.Chrome(self.patchOfChrome)
 
         time.sleep(5)
         # Заходим на сайт с формой регистрации
@@ -106,7 +106,7 @@ class Schedule:
                 page.pop(0)
 
         # Сохраняем в json файл
-        with open('ScheduleToDay.json', 'w') as fout:
+        with open(patchSave, 'w') as fout:
             json.dump(days, fout)
         print('Save!')
         return True

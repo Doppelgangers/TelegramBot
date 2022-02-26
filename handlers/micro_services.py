@@ -4,7 +4,7 @@ from scripts.Schedule import Schedule
 
 async def echo(message: types.Message):
     s = Schedule()
-    text = s.readText('handlers/ScheduleToDay.json')
+    text = s.readText('data/schedule/ScheduleToDay.json')
     await message.answer(text)
 
 
