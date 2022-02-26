@@ -2,7 +2,7 @@
 
 call %~dp0\venv\Scripts\activate
 
-python timersScrtpt.py
+
 python bot.py
 
 
