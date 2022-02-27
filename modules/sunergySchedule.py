@@ -28,12 +28,12 @@ class SynergySchedule:
         # Вводим логин
             name = dr.find_element_by_id("popupUsername")
             name.clear()
-            name.send_keys("Soldatov.4848@bk.ru")
+            name.send_keys("")
 
             # Вводим пороль
             password = dr.find_element_by_id('popupPassword')
             password.clear()
-            password.send_keys("Sem1980123")
+            password.send_keys("")
 
             # Жмём кнопку входа и ждём загрузки
             btnAut = dr.find_element_by_id('popupLoginBtn').click()
