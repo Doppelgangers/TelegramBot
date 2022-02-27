@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 import time
 import json
 
-class Schedule:
+class SynergySchedule:
     def __init__(self , patchOfChrome= 'data/chromedriver.exe'):
         self.patchOfChrome = patchOfChrome
 

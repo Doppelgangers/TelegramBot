@@ -2,15 +2,15 @@ import random
 import schedule
 import datetime
 import time
-from scripts.Schedule import Schedule
-from scripts.postMesage import ApiBot
+from modules.sunergySchedule import SynergySchedule
+from modules.telegramApiBot import ApiBot
 
 file = open ("configs/token.txt")
 telegramToken = file.read()
 file.close()
 
 bot = ApiBot(telegramToken)
-sched = Schedule('data/chromedriver.exe')
+sched = SynergySchedule('data/chromedriver.exe')
 
 def nowSchedule():
     today = datetime.date.today()
@@ -32,6 +32,8 @@ def spamTomorrow():
     tex = sched.readText('data/schedule/ScheduleTomorrow.json')
     bot.sendMsg('761897585', 'Расписание на завтра: \n' + tex)
 
+
+print("is started")
 
 schedule.every().day.at("06:00").do(nowSchedule)
 schedule.every().day.at("06:30").do(spamToDay)

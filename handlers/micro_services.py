@@ -1,12 +1,12 @@
 from aiogram import types ,Dispatcher
 
-from scripts.Schedule import Schedule
-from scripts.anime import AnimeList
+from modules.sunergySchedule import SynergySchedule
+from modules.anime import AnimeList
 
 async def echo(message: types.Message):
 
     if message.text != "anime":
-        s = Schedule()
+        s = SynergySchedule()
         text = s.readText('data/schedule/ScheduleToDay.json')
     else:
         ani = AnimeList()
