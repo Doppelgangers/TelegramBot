@@ -1,5 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
+
+
 class AnimeList:
     def __init__(self):
         pass

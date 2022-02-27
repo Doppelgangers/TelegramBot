@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 import time
 import json
 
+
 class SynergySchedule:
     def __init__(self , patchOfChrome= 'data/chromedriver.exe'):
         self.patchOfChrome = patchOfChrome
@@ -27,12 +28,12 @@ class SynergySchedule:
         # Вводим логин
             name = dr.find_element_by_id("popupUsername")
             name.clear()
-            name.send_keys("6666genocide666@mail.ru")
+            name.send_keys("Soldatov.4848@bk.ru")
 
             # Вводим пороль
             password = dr.find_element_by_id('popupPassword')
             password.clear()
-            password.send_keys("AGNO3Amiak")
+            password.send_keys("Sem1980123")
 
             # Жмём кнопку входа и ждём загрузки
             btnAut = dr.find_element_by_id('popupLoginBtn').click()
@@ -128,7 +129,7 @@ class SynergySchedule:
             text += data[i]['time'] + "\n" + data[i]['name'] + "\n" + "\n"
         return text
 
-    def readJSON(self , path='ScheduleToDay.json' ):
+    def readJSON(self, path='ScheduleToDay.json' ):
         ### Просто считывает сохранённый ранее файл и выдаёт как список словарей ###
         with open(path, "r") as read_file:
             data = json.load(read_file)
