@@ -18,20 +18,31 @@ async def echo(message: types.Message):
         if not db.user_exists(message.from_user.id):
             db.add_user(message.from_user.id)
             db.set_nickname(message.from_user.id, message.from_user.first_name + ' ' + message.from_user.last_name)
+        return
 
-    elif message.text == '🏫 Schedule':
+    if message.text == '🏫 Schedule':
         s = SynergySchedule()
         text = s.readText('data/schedule/ScheduleToDay.json')
-    elif message.text == '🎬 Anime':
+        await bot.send_message(message.from_user.id, text)
+        return
+
+    if message.text == '🎬 Anime':
         ani = AnimeList()
         text = 'Сегодня выходят: \n' + ani.getAnime()
-    elif message.text == '➡ Other':
+        await bot.send_message(message.from_user.id, text)
+        return
+
+    if message.text == '➡ Other':
         await bot.send_message(message.from_user.id, 'Побочное меню', reply_markup=kb_client.otherMenu)
-    elif message.text == '📜 Main menu':
+        return
+
+    if message.text == '📜 Main menu':
         await bot.send_message(message.from_user.id, 'Основное меню', reply_markup=kb_client.mainMenu)
+        return
+
     else:
-        await bot.send_message(message.from_user.id, "Пока пусто!")
-    await message.answer(text)
+        await bot.send_message(message.from_user.id, "Данной команды нет, или она в разработке!")
+
 
 
 def registerHendlers_commands(dp: Dispatcher):
