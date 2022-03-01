@@ -5,8 +5,10 @@ import json
 
 
 class SynergySchedule:
-    def __init__(self , patchOfChrome= 'data/chromedriver.exe'):
+    def __init__(self , userName='' ,userPassword='', patchOfChrome= 'data/chromedriver.exe'):
         self.patchOfChrome = patchOfChrome
+        self.userName = userName
+        self.userPassword = userPassword
 
     def uppdate(self, date = '25.02.2022' , patchSave = 'data/schedule/ScheduleToDay.json'):
     ### В фунцию передаётся дата в формате dd.mm.yyyy ###
@@ -28,12 +30,12 @@ class SynergySchedule:
         # Вводим логин
             name = dr.find_element_by_id("popupUsername")
             name.clear()
-            name.send_keys("")
+            name.send_keys(self.userName)
 
             # Вводим пороль
             password = dr.find_element_by_id('popupPassword')
             password.clear()
-            password.send_keys("")
+            password.send_keys(self.userPassword)
 
             # Жмём кнопку входа и ждём загрузки
             btnAut = dr.find_element_by_id('popupLoginBtn').click()

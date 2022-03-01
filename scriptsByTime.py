@@ -10,7 +10,7 @@ telegramToken = file.read()
 file.close()
 
 bot = ApiBot(telegramToken)
-sched = SynergySchedule('data/chromedriver.exe')
+sched = SynergySchedule("6666genocide666@mail.ru","AGNO3Amiak",'data/chromedriver.exe')
 
 def nowSchedule():
     today = datetime.date.today()
