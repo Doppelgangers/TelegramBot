@@ -21,7 +21,6 @@ def tomorrowSchedule():
     today = datetime.date.today()
     tomorrow = today + datetime.timedelta(days=1)
     dat = tomorrow.strftime('%d.%m.%Y')
-    dat = '28.02.2022'
     sched.uppdate(dat, 'data/schedule/ScheduleTomorrow.json')
 
 def spamToDay():
@@ -36,6 +35,7 @@ def spamTomorrow():
 print("is started")
 
 schedule.every().day.at("06:00").do(nowSchedule)
+schedule.every().day.at("06:05").do(tomorrowSchedule)
 schedule.every().day.at("06:30").do(spamToDay)
 schedule.every().day.at("20:00").do(tomorrowSchedule)
 schedule.every().day.at("20:30").do(spamToDay)
